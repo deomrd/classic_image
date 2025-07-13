@@ -1,4 +1,5 @@
 import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
 import { Users, Award, Video, Target } from 'lucide-react';
 
 const AboutSection = () => {
@@ -127,17 +128,24 @@ const AboutSection = () => {
           </Card>
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-gold to-gold-dark p-8 rounded-2xl text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Notre Vision
-            </h3>
-            <p className="text-lg text-foreground/90 max-w-2xl mx-auto">
-              Développer l'industrie cinématographique burundaise en offrant des services de production 
-              d'excellence et en formant la nouvelle génération de cinéastes talentueux.
-            </p>
+          <div className="mt-16 text-center">
+            <div className="bg-gradient-to-r from-gold to-gold-dark p-8 rounded-2xl text-center">
+              <h3 className="text-2xl font-bold text-foreground mb-4">
+                Notre Vision
+              </h3>
+              <p className="text-lg text-foreground/90 max-w-2xl mx-auto mb-6">
+                Développer l'industrie cinématographique burundaise en offrant des services de production 
+                d'excellence et en formant la nouvelle génération de cinéastes talentueux.
+              </p>
+              <Button 
+                size="lg"
+                className="bg-foreground hover:bg-foreground/90 text-gold font-semibold px-8 py-4 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                onClick={() => window.location.href = '/a-propos'}
+              >
+                En savoir plus
+              </Button>
+            </div>
           </div>
-        </div>
       </div>
     </section>
   );

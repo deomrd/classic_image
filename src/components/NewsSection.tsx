@@ -175,6 +175,7 @@ const NewsSection = () => {
                           variant="ghost"
                           size="sm"
                           className="text-gold hover:text-foreground hover:bg-gold transition-all duration-300 p-0"
+                          onClick={() => window.location.href = `/actualites/${item.id}`}
                         >
                           Lire la suite
                           <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" />
