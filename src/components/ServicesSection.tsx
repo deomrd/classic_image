@@ -90,11 +90,6 @@ const ServicesSection = () => {
                   ))}
                 </ul>
                 
-                <Button 
-                  className="w-full bg-gold hover:bg-gold-dark text-foreground font-semibold transition-all duration-300 hover:shadow-lg"
-                >
-                  En savoir plus
-                </Button>
               </CardContent>
             </Card>
           ))}

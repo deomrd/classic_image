@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface NavigationProps {
   currentSection: string;
@@ -10,6 +11,9 @@ interface NavigationProps {
 const Navigation = ({ currentSection, onSectionChange }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
 
   const navItems = [
     { id: 'accueil', label: 'ACCUEIL' },
@@ -31,12 +35,21 @@ const Navigation = ({ currentSection, onSectionChange }: NavigationProps) => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      onSectionChange(sectionId);
-    }
     setIsMobileMenuOpen(false);
+
+    if (isHome) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        onSectionChange(sectionId);
+      }
+    } else {
+      if (sectionId === 'accueil') {
+        navigate('/');
+      } else {
+        navigate(`/#${sectionId}`);
+      }
+    }
   };
 
   return (
@@ -51,12 +64,7 @@ const Navigation = ({ currentSection, onSectionChange }: NavigationProps) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-gold to-gold-dark rounded-full flex items-center justify-center">
-              <span className="text-foreground font-bold text-sm">C</span>
-            </div>
-            <span className="font-bold text-lg text-foreground">
-              Classic Imagez
-            </span>
+            <img src="/logo.png" alt="Logo Classic Imagez" className="h-40 w-auto mt-8" />
           </div>
 
           {/* Desktop Navigation */}

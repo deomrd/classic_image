@@ -1,12 +1,11 @@
-import { Heart, Mail, Phone, MapPin, Youtube, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Heart, Mail, Phone, MapPin, Youtube, Facebook, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Youtube, href: "#", label: "YouTube" },
+    { icon: Youtube, href: "https://www.youtube.com/@Classicimagezprod", label: "YouTube" },
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" }
+    { icon: Instagram, href: "#", label: "Instagram" }
   ];
 
   const quickLinks = [
@@ -30,21 +29,22 @@ const Footer = () => {
     }
   };
 
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container mx-auto px-4">
+    <footer className="bg-foreground text-background w-full">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
         {/* Main Footer Content */}
         <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Company Info */}
             <div className="space-y-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-gradient-to-r from-gold to-gold-dark rounded-full flex items-center justify-center">
-                  <span className="text-foreground font-bold">C</span>
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-r from-gold to-gold-dark rounded-full flex items-center justify-center">
+                  <span className="text-foreground font-bold text-lg">C</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-background">Classic Imagez</h3>
-                  <p className="text-sm text-gold">Production</p>
+                  <h3 className="font-bold text-2xl">Classic Imagez</h3>
                 </div>
               </div>
               <p className="text-background/80 text-sm leading-relaxed">
@@ -57,19 +57,30 @@ const Footer = () => {
                   <Button
                     key={index}
                     variant="ghost"
-                    size="sm"
-                    className="w-10 h-10 p-0 rounded-full bg-background/10 hover:bg-gold hover:text-foreground transition-all duration-300"
+                    size="icon"
+                    className="w-10 h-10 rounded-full bg-background/10 hover:bg-gold hover:text-foreground transition"
                     onClick={() => window.open(social.href, '_blank')}
+                    aria-label={social.label}
                   >
-                    <social.icon className="h-4 w-4" />
+                    <social.icon className="h-5 w-5" />
                   </Button>
                 ))}
               </div>
             </div>
 
+            {/* Company Info */}
+            <div className="space-y-6">
+              
+              <p className="text-background/80 text-sm leading-relaxed">
+                Classic Imagez donne vie à vos projets avec une production audiovisuelle de qualité.
+                Experts en films et séries, nous valorisons les talents burundais et soutenons le développement des compétences locales.
+                Plus qu’un producteur, nous sommes un partenaire passionné, dédié à raconter des histoires qui inspirent et marquent.
+              </p>
+            </div>
+
             {/* Quick Links */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg text-background">Liens rapides</h4>
+              <h4 className="font-semibold text-xl">Liens rapides</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
@@ -86,7 +97,7 @@ const Footer = () => {
 
             {/* Services */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg text-background">Nos services</h4>
+              <h4 className="font-semibold text-xl">Nos services</h4>
               <ul className="space-y-3">
                 {services.map((service, index) => (
                   <li key={index}>
@@ -101,46 +112,15 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <h4 className="font-bold text-lg text-background">Contact</h4>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="h-4 w-4 text-gold mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm text-background/80">
-                      Bujumbura, Burundi<br />
-                      Quartier Rohero
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-4 w-4 text-gold flex-shrink-0" />
-                  <p className="text-sm text-background/80">
-                    +257 XX XX XX XX
-                  </p>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-4 w-4 text-gold flex-shrink-0" />
-                  <p className="text-sm text-background/80">
-                    contact@classicimagez.bi
-                  </p>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-background/20 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-background/60">
-              © 2024 Classic Imagez Production. Tous droits réservés.
-            </div>
-            <div className="flex items-center space-x-1 text-sm text-background/60">
-              <span>Créé avec</span>
-              <Heart className="h-4 w-4 text-red-500 fill-current" />
-              <span>par Classic Imagez Production</span>
+        <div className="border-t border-background/20 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
+            <div>
+              © {currentYear} Classic Imagez. Tous droits réservés.
             </div>
           </div>
         </div>

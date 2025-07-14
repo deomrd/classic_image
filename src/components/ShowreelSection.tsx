@@ -8,32 +8,18 @@ const ShowreelSection = () => {
 
   const videos = [
     {
-      id: "dQw4w9WgXcQ",
-      title: "Showreel 2024",
-      description: "Notre dernière compilation des meilleurs moments de production",
-      thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-      duration: "3:42"
+      id: "yRw43C7T2qE",
+      title: "The Munkaze Coffee",
+      description: `One coffee. Two continents. A revolution in every cup.`,
+      thumbnail: "/emission.png",
+      duration: "21:29"
     },
     {
-      id: "9bZkp7q19f0",
-      title: "Films Corporate",
-      description: "Exemples de nos réalisations pour entreprises",
-      thumbnail: "https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg",
-      duration: "2:15"
-    },
-    {
-      id: "jNQXAC9IVRw",
-      title: "Documentaires",
-      description: "Extraits de nos documentaires les plus marquants",
-      thumbnail: "https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg",
-      duration: "4:28"
-    },
-    {
-      id: "ScMzIvxBSi4",
-      title: "Clips Musicaux",
-      description: "Nos créations musicales les plus créatives",
-      thumbnail: "https://img.youtube.com/vi/ScMzIvxBSi4/maxresdefault.jpg",
-      duration: "3:15"
+      id: "4W57xlYf57c",
+      title: "CinéArt avec Raïssa Feza",
+      description: "Raïssa Feza, actrice, scénariste et mère, partage son parcours",
+      thumbnail: "/emission1.png",
+      duration: "3:14"
     }
   ];
 
@@ -141,17 +127,6 @@ const ShowreelSection = () => {
               </Card>
             ))}
           </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <Button
-            onClick={() => window.open('https://www.youtube.com/@classicimagez', '_blank')}
-            size="lg"
-            className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 py-4 transition-all duration-300 hover:shadow-lg hover:scale-105"
-          >
-            <ExternalLink className="mr-2 h-5 w-5" />
-            Voir toutes nos vidéos
-          </Button>
         </div>
       </div>
     </section>

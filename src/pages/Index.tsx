@@ -15,7 +15,7 @@ const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['accueil', 'apropos', 'services', 'showreel', 'portfolio', 'actualites', 'contact'];
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -34,9 +34,13 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation currentSection={currentSection} onSectionChange={setCurrentSection} />
-      
-      <main>
+      {/* Header always visible and white */}
+      <div className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+        <Navigation currentSection={currentSection} onSectionChange={setCurrentSection} />
+      </div>
+
+      {/* Main content with top padding to avoid header overlap */}
+      <main className="pt-20">
         <HeroSection />
         <AboutSection />
         <ServicesSection />
@@ -45,7 +49,7 @@ const Index = () => {
         <NewsSection />
         <ContactSection />
       </main>
-      
+
       <Footer />
     </div>
   );

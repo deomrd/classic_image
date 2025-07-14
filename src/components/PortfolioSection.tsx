@@ -18,69 +18,12 @@ const PortfolioSection = () => {
     {
       id: 1,
       title: "IWANJE",
-      category: "films",
-      year: "2024",
-      description: "Un film poignant sur les traditions burundaises",
-      thumbnail: "https://images.unsplash.com/photo-1489599510543-4b3474f8c8dc?w=600&h=400&fit=crop",
-      duration: "95 min",
-      views: "12.5K",
-      likes: "890"
-    },
-    {
-      id: 2,
-      title: "AUX BOUTS DU DÉSESPOIR",
-      category: "films",
-      year: "2023",
-      description: "Drame social contemporain",
-      thumbnail: "https://images.unsplash.com/photo-1518883385237-b31c68b4a82b?w=600&h=400&fit=crop",
-      duration: "107 min",
-      views: "8.3K",
-      likes: "652"
-    },
-    {
-      id: 3,
-      title: "BURUNDI STORIES",
       category: "series",
       year: "2024",
-      description: "Série documentaire sur la culture burundaise",
-      thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
-      duration: "6 épisodes",
-      views: "15.2K",
-      likes: "1.1K"
+      description: `IWANJE est une série poignante qui explore en profondeur les traditions ancestrales du Burundi. À travers des récits riches en émotion, elle met en lumière les valeurs, les rites et les enjeux d’une culture en pleine mutation, tout en rendant hommage à la sagesse des anciens et à la force des liens communautaires.`,
+      thumbnail: "/iwanje.png",
+      duration: "12 h",
     },
-    {
-      id: 4,
-      title: "TRADITIONS VIVANTES",
-      category: "documentaires",
-      year: "2023",
-      description: "Documentaire sur les arts traditionnels",
-      thumbnail: "https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?w=600&h=400&fit=crop",
-      duration: "52 min",
-      views: "6.7K",
-      likes: "421"
-    },
-    {
-      id: 5,
-      title: "ENTREPRISE MODERNE",
-      category: "corporate",
-      year: "2024",
-      description: "Film corporate pour développement économique",
-      thumbnail: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop",
-      duration: "8 min",
-      views: "3.2K",
-      likes: "189"
-    },
-    {
-      id: 6,
-      title: "JEUNESSE BURUNDAISE",
-      category: "documentaires",
-      year: "2024",
-      description: "Portrait de la nouvelle génération",
-      thumbnail: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop",
-      duration: "73 min",
-      views: "9.1K",
-      likes: "734"
-    }
   ];
 
   const filteredProjects = selectedCategory === 'all' 
@@ -117,13 +60,14 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Grid layout: 1 column on small screens, 2 columns (50%) on md+ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => (
             <Card
               key={project.id}
-              className="group overflow-hidden bg-background border-0 hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+              className="group overflow-hidden bg-background border-0 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 h-[600px]"
             >
-              <CardContent className="p-0">
+              <CardContent className="p-0 h-full flex flex-col">
                 <div className="relative aspect-video overflow-hidden">
                   <img
                     src={project.thumbnail}
@@ -146,11 +90,9 @@ const PortfolioSection = () => {
                   <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-black/60 backdrop-blur-sm rounded-full px-3 py-1 flex items-center text-white text-sm">
                       <Eye className="h-3 w-3 mr-1" />
-                      {project.views}
                     </div>
                     <div className="bg-black/60 backdrop-blur-sm rounded-full px-3 py-1 flex items-center text-white text-sm">
                       <Heart className="h-3 w-3 mr-1" />
-                      {project.likes}
                     </div>
                   </div>
 
@@ -162,46 +104,30 @@ const PortfolioSection = () => {
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-gold transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-1" />
-                      {project.duration}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-2xl font-bold text-foreground group-hover:text-gold transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {project.duration}
+                      </div>
                     </div>
+                    <p className="text-muted-foreground text-base mb-4">
+                      {project.description}
+                    </p>
                   </div>
-                  
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {project.description}
-                  </p>
-
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-gold font-medium uppercase tracking-wide">
+                    <span className="text-sm text-gold font-medium uppercase tracking-wide">
                       {categories.find(c => c.id === project.category)?.label}
                     </span>
-                    <Button 
-                      size="sm" 
-                      variant="ghost"
-                      className="text-gold hover:text-foreground hover:bg-gold transition-all duration-300"
-                    >
-                      Voir plus
-                    </Button>
                   </div>
                 </div>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button
-            size="lg"
-            className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 py-4 transition-all duration-300 hover:shadow-lg hover:scale-105"
-          >
-            Voir tous nos projets
-          </Button>
         </div>
       </div>
     </section>

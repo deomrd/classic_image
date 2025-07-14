@@ -17,32 +17,7 @@ const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Adresse",
-      content: "Bujumbura, Burundi\nQuartier Rohero",
-      color: "text-blue-500"
-    },
-    {
-      icon: Phone,
-      title: "Téléphone",
-      content: "+257 XX XX XX XX\n+257 XX XX XX XX",
-      color: "text-green-500"
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "contact@classicimagez.bi\nproduction@classicimagez.bi",
-      color: "text-gold"
-    },
-    {
-      icon: Clock,
-      title: "Horaires",
-      content: "Lun - Ven: 8h00 - 17h00\nSam: 9h00 - 13h00",
-      color: "text-purple-500"
-    }
-  ];
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -97,39 +72,29 @@ const ContactSection = () => {
                 Informations de contact
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {contactInfo.map((info, index) => (
-                  <Card key={index} className="bg-background border-0 hover:shadow-lg transition-all duration-300">
-                    <CardContent className="p-6 text-center">
-                      <div className={`w-12 h-12 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center`}>
-                        <info.icon className={`h-6 w-6 ${info.color}`} />
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">
-                        {info.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground whitespace-pre-line">
-                        {info.content}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
+
               </div>
             </div>
 
             {/* Map Placeholder */}
             <Card className="bg-background border-0 overflow-hidden">
-              <CardContent className="p-0">
-                <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold-dark/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-gold mx-auto mb-4" />
-                    <p className="text-foreground font-medium">
-                      Carte de localisation
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Bujumbura, Burundi
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
+             <CardContent className="p-0">
+              <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold-dark/20 flex items-center justify-center">
+                <iframe
+                  title="Carte de localisation - Quartier Asiatique, Bujumbura"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3982.857857862796!2d-29.357384925027706!3d3.38487999658975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!1s0x0%3A0x7a934fb4a16968fa!5e0!3m2!1sfr!2srw!4v1752474338754!5m2!1sfr!2srw"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-b"
+                />
+              </div>
+            </CardContent>
+
+
             </Card>
           </div>
 
