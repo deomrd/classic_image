@@ -66,37 +66,63 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">
-                Informations de contact
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div className="space-y-8">
+  <div>
+    <h3 className="text-2xl font-bold text-foreground mb-6">
+      Informations de contact
+    </h3>
+    <div className="space-y-6">
+      {/* Téléphone */}
+      <div className="flex items-start space-x-4">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+          <Phone className="w-6 h-6" />
+        </div>
+        <div>
+          <p className="font-semibold text-foreground">Téléphone</p>
+          <p className="text-muted-foreground">+257 62 663 533</p>
+          <p className="text-muted-foreground">+221 771 481 855</p>
+        </div>
+      </div>
 
-              </div>
-            </div>
+      {/* Email */}
+      <div className="flex items-start space-x-4">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+          <Mail className="w-6 h-6" />
+        </div>
+        <div>
+          <p className="font-semibold text-foreground">Email</p>
+          <p className="text-muted-foreground">classicimagez01@gmail.com</p>
+        </div>
+      </div>
 
-            {/* Map Placeholder */}
-            <Card className="bg-background border-0 overflow-hidden">
-             <CardContent className="p-0">
-              <div className="aspect-video bg-gradient-to-br from-gold/20 to-gold-dark/20 flex items-center justify-center">
-                <iframe
-                  title="Carte de localisation - Quartier Asiatique, Bujumbura"
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3982.857857862796!2d-29.357384925027706!3d3.38487999658975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!1s0x0%3A0x7a934fb4a16968fa!5e0!3m2!1sfr!2srw!4v1752474338754!5m2!1sfr!2srw"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-b"
-                />
-              </div>
-            </CardContent>
-
-
-            </Card>
+      {/* Adresse */}
+      <div className="flex items-start space-x-4">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+          <MapPin className="w-6 h-6" />
+        </div>
+          <div>
+            <p className="font-semibold text-foreground">Adresse</p>
+            <p className="text-muted-foreground">Quartier Asiatique</p>
+            <p className="text-muted-foreground">Bujumbura, Burundi</p>
           </div>
+        </div>
+
+        {/* Heures d'ouverture */}
+        <div className="flex items-start space-x-4">
+          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+            <Clock className="w-6 h-6" />
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Heures d'ouverture</p>
+            <p className="text-muted-foreground">Lun - Ven: 8h00 - 18h00</p>
+            <p className="text-muted-foreground">Sam: 9h00 - 13h00</p>
+            <p className="text-muted-foreground">Dim: Fermé</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
           {/* Contact Form */}
           <div>

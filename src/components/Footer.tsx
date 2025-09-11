@@ -4,20 +4,20 @@ import { Button } from './ui/button';
 const Footer = () => {
   const socialLinks = [
     { icon: Youtube, href: "https://www.youtube.com/@Classicimagezprod", label: "YouTube" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" }
+    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61573967932157&mibextid=wwXIfr&rdid=nrGboKQMPMblcmZb&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1PqKbbpQ2t%2F%3Fmibextid%3DwwXIfr#", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/c_i_prod?igsh=MWh1NnFpOGF0d2Y1Yw%3D%3D&utm_source=qr", label: "Instagram" }
   ];
 
   const quickLinks = [
     { label: "Accueil", href: "#accueil" },
-    { label: "À propos", href: "#apropos" },
+    { label: "A propos", href: "#apropos" },
     { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" }
+    { label: "Réaiisations", href: "#portfolio" }
   ];
 
   const services = [
     { label: "Production de films", href: "#services" },
-    { label: "Réalisation de séries", href: "#services" },
+    { label: "Réalisation de documentaires", href: "#services" },
     { label: "Formation cinéma", href: "#services" },
     { label: "Promotion artistique", href: "#services" }
   ];
@@ -40,15 +40,20 @@ const Footer = () => {
             {/* Company Info */}
             <div className="space-y-6">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-gold to-gold-dark rounded-full flex items-center justify-center">
-                  <span className="text-foreground font-bold text-lg">C</span>
+                <div className="w-12 h-12 bg-white  rounded-full flex items-center justify-center">
+                  <img 
+                    src="/logo.png" 
+                    alt="Logo" 
+                    className="w-12 h-12 object-contain" 
+                  />
                 </div>
+
                 <div>
                   <h3 className="font-bold text-2xl">Classic Imagez</h3>
                 </div>
               </div>
               <p className="text-background/80 text-sm leading-relaxed">
-                Votre partenaire privilégié pour la production de films et séries, 
+                Votre partenaire privilégié pour la production de films et documentaires, 
                 la promotion des cinéastes burundais, et le renforcement des capacités 
                 dans le domaine du cinéma.
               </p>

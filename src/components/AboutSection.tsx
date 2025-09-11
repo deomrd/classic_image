@@ -6,7 +6,7 @@ const AboutSection = () => {
     {
       icon: Video,
       title: "Production",
-      description: "Réalisation de films et séries de haute qualité avec une équipe expérimentée et du matériel professionnel.",
+      description: "Réalisation de films et documentaires de haute qualité avec une équipe expérimentée et du matériel professionnel.",
     },
     {
       icon: Users,
@@ -24,7 +24,7 @@ const AboutSection = () => {
     {
       icon: Target,
       title: "Mission claire",
-      description: "Promouvoir les cinéastes burundais et renforcer les capacités dans le domaine du cinéma.",
+      description: "Promouvoir les cinéastes burundais et de l'Afrique de l'Est, et renforcer les capacités dans le domaine du cinéma.",
     },
     {
       icon: Users,
@@ -47,8 +47,7 @@ const AboutSection = () => {
             Pourquoi nous choisir ?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Classic Imagez Production est votre partenaire privilégié pour la production de films et séries, 
-            la promotion des cinéastes burundais, et le renforcement des capacités dans le domaine du cinéma.
+            Classic Imagez Production est votre partenaire privilégié pour la production de films et documentaires, la promotion des cinéastes burundais et de l'Afrique de l'Est, et le renforcement des capacités dans le domaine du cinéma.
           </p>
         </div>
 
@@ -70,7 +69,7 @@ const AboutSection = () => {
           {/* Image centrale */}
           <div className="flex justify-center">
             <img
-              src="/cam_jean.png"
+              src="/cam_jean.jpg"
               alt="Portrait"
               className="rounded-xl shadow-lg w-72 h-auto object-cover"
             />

@@ -17,10 +17,10 @@ const Navigation = ({ currentSection, onSectionChange }: NavigationProps) => {
 
   const navItems = [
     { id: 'accueil', label: 'ACCUEIL' },
-    { id: 'apropos', label: 'À PROPOS' },
+    { id: 'apropos', label: 'A PROPOS' },
     { id: 'services', label: 'SERVICES' },
     { id: 'showreel', label: 'SHOWREEL' },
-    { id: 'portfolio', label: 'PORTFOLIO' },
+    { id: 'portfolio', label: 'REALISATIONS' },
     { id: 'actualites', label: 'ACTUALITÉS' },
     { id: 'contact', label: 'CONTACT' },
   ];

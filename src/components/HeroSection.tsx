@@ -1,43 +1,53 @@
 import { useState, useEffect } from 'react';
-import { Button } from './ui/button';
-import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
-import heroBg from '../assets/hero-bg.jpg';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const HeroSection = () => {
-  const [currentVideo, setCurrentVideo] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const videoSlides = [
+  // Slides avec images et textes
+  const slides = [
     {
+      image: "/slider/1.jpg",
       title: "Réalisation de films",
       subtitle: "pour entreprises",
-      description: "Production audiovisuelle professionnelle au service de votre créativité"
+      description:
+        "Production audiovisuelle professionnelle au service de votre créativité",
     },
     {
+      image: "/slider/2.jpg",
       title: "Production créative",
       subtitle: "et innovation",
-      description: "Des histoires qui marquent, des images qui parlent"
+      description: "Des histoires qui marquent, des images qui parlent",
     },
     {
-      title: "Formation cinéma",
-      subtitle: "et développement",
-      description: "Renforcement des capacités dans le domaine du cinéma"
-    }
+      image: "/slider/3.jpg",
+      title: "Formation Audiovisuelle",
+      subtitle: "Expertise et savoir-faire",
+      description:
+        "Renforcement des capacités dans le domaine du cinéma",
+    },
+    {
+      image: "/slider/4.jpg",
+      title: "Studio professionnel",
+      subtitle: "Matériels de haute qualité",
+      description:
+        "Tournage et post-production avec équipements de pointe",
+    },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentVideo((prev) => (prev + 1) % videoSlides.length);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [slides.length]);
 
   const nextSlide = () => {
-    setCurrentVideo((prev) => (prev + 1) % videoSlides.length);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentVideo((prev) => (prev - 1 + videoSlides.length) % videoSlides.length);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
@@ -45,11 +55,11 @@ const HeroSection = () => {
       id="accueil"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Overlay */}
+      {/* Background dynamique */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-700"
         style={{
-          backgroundImage: `url(${heroBg})`,
+          backgroundImage: `url(${slides[currentSlide].image})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
@@ -57,35 +67,16 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-        {/* Animated Text Content */}
         <div className="mb-8 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 leading-tight">
-            {videoSlides[currentVideo].title}
+            {slides[currentSlide].title}
           </h1>
           <h2 className="text-3xl md:text-5xl font-light text-gold mb-6">
-            {videoSlides[currentVideo].subtitle}
+            {slides[currentSlide].subtitle}
           </h2>
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            {videoSlides[currentVideo].description}
+            {slides[currentSlide].description}
           </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button
-            size="lg"
-            className="bg-gold hover:bg-gold-dark text-foreground font-semibold px-8 py-4 text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
-          >
-            Découvrir
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-2 border-white text-white hover:bg-white hover:text-foreground font-semibold px-8 py-4 text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
-          >
-            <Play className="mr-2 h-5 w-5" />
-            Showreel
-          </Button>
         </div>
 
         {/* Carousel Navigation */}
@@ -96,16 +87,16 @@ const HeroSection = () => {
           >
             <ChevronLeft className="h-6 w-6 text-white" />
           </button>
-          
+
           <div className="flex space-x-2">
-            {videoSlides.map((_, index) => (
+            {slides.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentVideo(index)}
+                onClick={() => setCurrentSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentVideo
-                    ? 'bg-gold scale-125'
-                    : 'bg-white/50 hover:bg-white/80'
+                  index === currentSlide
+                    ? "bg-gold scale-125"
+                    : "bg-white/50 hover:bg-white/80"
                 }`}
               />
             ))}
