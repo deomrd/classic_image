@@ -21,6 +21,7 @@ const NewsSection = () => {
   const newsItems = [
     { title: "Jean Merci Namegabe", excerpt: "Directeur Général", image: "/team/ceo.jpg" },
     { title: "Raissa Feza", excerpt: "Administrative & Promotion", image: "/team/prom.jpg" },
+    { title: "Rukeza - Laly", excerpt: " ", image: "/team/rukeza.jpg" },
   ];
 
   return (
