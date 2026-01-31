@@ -21,7 +21,7 @@ const Navigation = ({ currentSection, onSectionChange }: NavigationProps) => {
     { id: 'services', label: 'SERVICES' },
     { id: 'showreel', label: 'SHOWREEL' },
     { id: 'portfolio', label: 'REALISATIONS' },
-    { id: 'actualites', label: 'ACTUALITÉS' },
+    { id: 'actualites', label: 'EQUIPES' },
     { id: 'contact', label: 'CONTACT' },
   ];
 

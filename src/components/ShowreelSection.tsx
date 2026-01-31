@@ -8,6 +8,13 @@ const ShowreelSection = () => {
 
   const videos = [
     {
+      id: "zUbQOsn4L3A",
+      title: "Jongoma",
+      description: ``,
+      thumbnail: "/jongoma.jpeg",
+      duration: "21:51"
+    },
+    {
       id: "yRw43C7T2qE",
       title: "The Munkaze Coffee",
       description: `One coffee. Two continents. A revolution in every cup.`,

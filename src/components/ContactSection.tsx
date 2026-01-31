@@ -9,15 +9,10 @@ import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,20 +26,36 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Préparer le message pour WhatsApp - Version simplifiée et plus amicale
+    const whatsappMessage = `Bonjour Classic Image Z ! 👋%0A%0A
+Je m'appelle *${formData.name.trim()}*%0A%0A
+*Mon message :*%0A${formData.message.trim()}%0A%0A
+---
+Message envoyé depuis votre site web
+${new Date().toLocaleDateString('fr-FR', { 
+  weekday: 'long', 
+  year: 'numeric', 
+  month: 'long', 
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit'
+})}`;
+
+    const whatsappNumber = '25762663533'; // Format international sans le +
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Ouvrir WhatsApp dans un nouvel onglet
+    window.open(whatsappUrl, '_blank');
 
     toast({
-      title: "Message envoyé !",
-      description: "Nous vous recontacterons dans les plus brefs délais.",
+      title: "Ouverture de WhatsApp !",
+      description: "Vous allez être redirigé vers WhatsApp pour finaliser l'envoi.",
+      variant: "default",
     });
 
     // Reset form
     setFormData({
       name: '',
-      email: '',
-      phone: '',
-      subject: '',
       message: ''
     });
 
@@ -66,127 +77,116 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-<div className="space-y-8">
-  <div>
-    <h3 className="text-2xl font-bold text-foreground mb-6">
-      Informations de contact
-    </h3>
-    <div className="space-y-6">
-      {/* Téléphone */}
-      <div className="flex items-start space-x-4">
-        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
-          <Phone className="w-6 h-6" />
-        </div>
-        <div>
-          <p className="font-semibold text-foreground">Téléphone</p>
-          <p className="text-muted-foreground">+257 62 663 533</p>
-          <p className="text-muted-foreground">+221 771 481 855</p>
-        </div>
-      </div>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Informations de contact
+              </h3>
+              <div className="space-y-6">
+                {/* WhatsApp Direct */}
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-500/20 text-green-600">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Contact </p>
+                    <a 
+                      href="https://wa.me/25762663533" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-green-600 hover:text-green-700 hover:underline transition-colors text-lg font-medium"
+                    >
+                      +257 62 663 533
+                    </a>
+                    <p className="text-muted-foreground mt-1">+221 771 481 855</p>
+                  </div>
+                </div>
 
-      {/* Email */}
-      <div className="flex items-start space-x-4">
-        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
-          <Mail className="w-6 h-6" />
-        </div>
-        <div>
-          <p className="font-semibold text-foreground">Email</p>
-          <p className="text-muted-foreground">classicimagez01@gmail.com</p>
-        </div>
-      </div>
+                {/* Email */}
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Email</p>
+                    <a 
+                      href="mailto:classicimagez01@gmail.com"
+                      className="text-muted-foreground hover:text-gold hover:underline transition-colors"
+                    >
+                      classicimagez01@gmail.com
+                    </a>
+                  </div>
+                </div>
 
-      {/* Adresse */}
-      <div className="flex items-start space-x-4">
-        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
-          <MapPin className="w-6 h-6" />
-        </div>
-          <div>
-            <p className="font-semibold text-foreground">Adresse</p>
-            <p className="text-muted-foreground">Quartier Asiatique</p>
-            <p className="text-muted-foreground">Bujumbura, Burundi</p>
+                {/* Adresse */}
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Adresse</p>
+                    <p className="text-muted-foreground">Quartier Asiatique</p>
+                    <p className="text-muted-foreground">Bujumbura, Burundi</p>
+                  </div>
+                </div>
+
+                {/* Heures d'ouverture */}
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
+                    <Clock className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground">Heures d'ouverture</p>
+                    <p className="text-muted-foreground">Lun - Ven: 8h00 - 18h00</p>
+                    <p className="text-muted-foreground">Sam: 9h00 - 13h00</p>
+                    <p className="text-muted-foreground">Dim: Fermé</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Heures d'ouverture */}
-        <div className="flex items-start space-x-4">
-          <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gold/20 text-gold">
-            <Clock className="w-6 h-6" />
-          </div>
-          <div>
-            <p className="font-semibold text-foreground">Heures d'ouverture</p>
-            <p className="text-muted-foreground">Lun - Ven: 8h00 - 18h00</p>
-            <p className="text-muted-foreground">Sam: 9h00 - 13h00</p>
-            <p className="text-muted-foreground">Dim: Fermé</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-          {/* Contact Form */}
+          {/* Contact Form Simplifié */}
           <div>
             <Card className="bg-background border-0 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground">
-                  Envoyez-nous un message
+                  Message via WhatsApp
                 </CardTitle>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Remplissez ce formulaire pour ouvrir WhatsApp avec votre message pré-rempli
+                </p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <Input
-                        name="name"
-                        placeholder="Votre nom *"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="border-gold/30 focus:border-gold"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        name="email"
-                        type="email"
-                        placeholder="Votre email *"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="border-gold/30 focus:border-gold"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <Input
-                        name="phone"
-                        placeholder="Votre téléphone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="border-gold/30 focus:border-gold"
-                      />
-                    </div>
-                    <div>
-                      <Input
-                        name="subject"
-                        placeholder="Sujet *"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        required
-                        className="border-gold/30 focus:border-gold"
-                      />
-                    </div>
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                      Votre nom *
+                    </label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      minLength={2}
+                      className="border-gold/30 focus:border-gold"
+                    />
                   </div>
 
                   <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                      Votre message *
+                    </label>
                     <Textarea
+                      id="message"
                       name="message"
-                      placeholder="Votre message *"
+                      placeholder="Décrivez votre projet, posez vos questions ou demandez un devis..."
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      minLength={10}
                       rows={6}
                       className="border-gold/30 focus:border-gold resize-none"
                     />
@@ -194,26 +194,27 @@ const ContactSection = () => {
 
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !formData.name.trim() || !formData.message.trim() || formData.message.length < 10}
                     size="lg"
-                    className="w-full bg-gold hover:bg-gold-dark text-foreground font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold transition-all duration-300 hover:shadow-lg transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-foreground mr-2"></div>
-                        Envoi en cours...
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                        Préparation du message...
                       </>
                     ) : (
                       <>
-                        <Send className="h-4 w-4 mr-2" />
-                        Envoyer le message
+                        <div className="flex items-center justify-center">
+                          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.76.982.998-3.675-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.9 6.994c-.004 5.45-4.438 9.88-9.888 9.88m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.333.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.333 11.893-11.893 0-3.18-1.24-6.162-3.495-8.411"/>
+                          </svg>
+                          <Send className="h-4 w-4 mr-2" />
+                          Ouvrir WhatsApp
+                        </div>
                       </>
                     )}
                   </Button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    * Champs obligatoires
-                  </p>
                 </form>
               </CardContent>
             </Card>
